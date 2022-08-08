@@ -1,0 +1,49 @@
+{
+  "name": "@yellfage/observation",
+  "version": "1.0.0-beta.1",
+  "author": "Yellfage",
+  "description": "Observation",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "npm-run-all clear compile declare",
+    "compile": "cross-env NODE_ENV=production webpack --config ./webpack.config.js",
+    "declare": "tsc --project ./tsconfig.json --outDir './dist' --emitDeclarationOnly",
+    "clear": "rimraf -rf ./dist/*",
+    "commit": "commit",
+    "eslint": "eslint --report-unused-disable-directives --resolve-plugins-relative-to ./ --ext .js,.ts",
+    "eslint:src": "npm run eslint ./src",
+    "eslint:src:fix": "npm run eslint:src -- -- --fix",
+    "prepublishOnly": "npm-run-all eslint:src:fix build"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yellfage/observation-js.git"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/prompt-cli": "^17.0.3",
+    "@yellfage/eslint-config-typescript": "^1.0.0",
+    "commitlint": "^17.0.3",
+    "cross-env": "^7.0.3",
+    "esbuild-loader": "^2.19.0",
+    "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "tsconfig-paths-webpack-plugin": "^3.5.2",
+    "typescript": "^4.7.4",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "dependencies": {
+    "@yellfage/events": "^1.0.0-beta.7"
+  }
+}
